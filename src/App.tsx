@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "./store";
+import { useAppDispatch, useAppSelector } from "./store/store";
 import { counterSliceActions } from "./store/features/counter/counterSlice";
 import "./App.css";
 import { useGetPokemonByNameQuery } from "./store/services/pokemon";
