@@ -14,7 +14,6 @@ import { sagaMiddleware } from "./middlewares/sagaMiddleware";
 import { rootSaga } from "./middlewares/rootSaga";
 import { persistReducers } from "./reducers/persistReducer";
 import { reducers } from "./reducers/rootReducer";
-import { services } from "./services/rootService";
 import { middlewares } from "./middlewares/rootMiddleware";
 
 const persistedReducer = persistReducers(reducers) as typeof reducers;
@@ -28,7 +27,6 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     })
-      .concat(services.map((service) => service.middleware))
       .concat(middlewares),
 });
 

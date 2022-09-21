@@ -1,0 +1,14 @@
+#import * from '../agency.fragment.graphql'
+
+query GetAgencies {
+  getAgencies {
+    ...Name
+    id
+    created_at
+    logo {
+      medium_uri
+    }
+    crm_company_id
+    enabled
+  }
+}

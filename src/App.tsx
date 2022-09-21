@@ -1,24 +1,25 @@
-import { useAppDispatch, useAppSelector } from "./store/store";
-import { counterSliceActions } from "./store/features/counter/counterSlice";
 import "./App.css";
-import { useGetPokemonByNameQuery } from "./store/services/pokemon";
+import { useGetAgenciesQuery } from "./graphql/generated/graphql";
+import { counterSliceActions } from "./store/features/counter/counterSlice";
+import { useAppDispatch, useAppSelector } from "./store/store";
 
 function PokemonItem() {
-  // Using a query hook automatically fetches data and returns query values
-  const { data, error, isLoading } = useGetPokemonByNameQuery("bulbasaur");
-  // Individual hooks are also accessible under the generated endpoints:
-  // const { data, error, isLoading } = pokemonApi.endpoints.getPokemonByName.useQuery('bulbasaur')
+  const { data, error, loading } = useGetAgenciesQuery();
+  // const [mutate, { }] = useEnableAgencyMutation()
 
+  const t = data?.getAgencies[0];
+  
+
+  // return <h1>Test</h1>
   return (
     <div className="App">
       {error ? (
         <>Oh no, there was an error</>
-      ) : isLoading ? (
+      ) : loading ? (
         <>Loading...</>
       ) : data ? (
         <>
-          <h3>{data.species.name}</h3>
-          <img src={data.sprites.front_shiny} alt={data.species.name} />
+          {JSON.stringify(data || {})}
         </>
       ) : null}
     </div>

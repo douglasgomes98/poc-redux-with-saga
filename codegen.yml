@@ -1,0 +1,21 @@
+overwrite: true
+
+schema: "https://bff-controlpanel.dev.agent.guru"
+
+documents: "./src/graphql/**/*.graphql"
+
+generates:
+  src/graphql/generated/graphql.tsx:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+      # - typescript-rtk-query:
+      #    importBaseApiFrom: '../../api'
+      #    exportHooks: true
+    config:
+      withHooks: true
+
+#hooks:
+  #afterAllFileWrite:
+    # - yarn lint 

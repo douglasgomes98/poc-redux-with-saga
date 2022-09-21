@@ -1,0 +1,3 @@
+mutation EnableAgency($enableAgencyId: Float!) {
+  enableAgency(id: $enableAgencyId)
+}
